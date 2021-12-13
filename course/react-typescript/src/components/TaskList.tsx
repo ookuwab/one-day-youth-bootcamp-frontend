@@ -26,15 +26,17 @@ export const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
         my="1em"
       >
         {tasks.map((task,index) => (
+          //TBD labelが長すぎると表示がはみ出す
           <Button
             key={`todo-${index}`}
             variant={!task.isDone ? "solid" :  "outline"}
             colorScheme={!task.isDone ? "green" :  "gray"}
             color={!task.isDone ? "#fff" :  "#ccc"}
             m="0.5em"
+            py="0.5em"
             onClick={() => handleCheckBox(task.isDone, index)}
           >
-            {task.label}
+            <Text whiteSpace="normal">{task.label}</Text>
           </Button>
         ))}
       </Flex>

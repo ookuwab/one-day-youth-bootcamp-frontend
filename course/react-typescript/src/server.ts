@@ -19,7 +19,7 @@ createServer({
     server.create('task', { label: '食器洗いdd', isDone: false });
     server.create('task', { label: '洗濯d', isDone: false });
     server.create('task', { label: '食器洗いeee', isDone: false });
-    server.create('task', { label: '洗濯eeeeee', isDone: false });
+    server.create('task', { label: 'あああああああああああああああああああああああああああああああああ', isDone: false });
   },
 
   routes() {
