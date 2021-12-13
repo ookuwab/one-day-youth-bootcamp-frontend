@@ -10,9 +10,14 @@
     "react-only:build": "yarn workspace react-only run build",
     "react-only:dev": "yarn workspace react-only run dev",
     "react-typescript:build": "yarn workspace react-typescript run build",
-    "react-typescript:dev": "yarn workspace react-typescript run dev"
+    "react-typescript:dev": "yarn workspace react-typescript run dev",
+    "prepare": "husky install"
   },
   "workspaces": [
     "course/*"
-  ]
+  ],
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "pretty-quick": "^3.1.2"
+  }
 }
