@@ -10,6 +10,16 @@ createServer({
   seeds(server: any) {
     server.create('task', { label: '食器洗い', isDone: false });
     server.create('task', { label: '洗濯', isDone: false });
+    server.create('task', { label: '食器洗いa', isDone: false });
+    server.create('task', { label: '洗濯a', isDone: false });
+    server.create('task', { label: '食器洗いbbb', isDone: false });
+    server.create('task', { label: '洗濯b', isDone: false });
+    server.create('task', { label: '食器洗いc', isDone: false });
+    server.create('task', { label: '洗濯c', isDone: false });
+    server.create('task', { label: '食器洗いdd', isDone: false });
+    server.create('task', { label: '洗濯d', isDone: false });
+    server.create('task', { label: '食器洗いeee', isDone: false });
+    server.create('task', { label: '洗濯eeeeee', isDone: false });
   },
 
   routes() {
@@ -21,12 +31,12 @@ createServer({
     });
     // 作成
     this.post('/tasks', (schema: any, request) => {
-      let attrs = JSON.parse(request.requestBody);
+      const attrs = JSON.parse(request.requestBody);
       return schema.tasks.post(attrs);
     });
     /// 削除
     this.delete('/tasks/:id', (schema: any, request) => {
-      let id = request.params.id;
+      const id = request.params.id;
       return schema.tasks.find(id).destroy();
     });
   },

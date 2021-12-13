@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Task } from '../';
+import { Flex,Checkbox,Text,Button } from '@chakra-ui/react';
 
 type Props = {
   tasks: Task[];
@@ -9,28 +10,34 @@ type Props = {
 export const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
   // Taskの状態を切り替える
   const handleCheckBox = (
-    e:React.ChangeEvent<HTMLInputElement>,
+    isDone:boolean,
     i:number
   ) => {
     const newTasks : Task[] = tasks.map((task , _i) => {
-      return _i === i ? { ...task, isDone: e.target.checked } : task;
+      return _i === i ? { ...task, isDone: !isDone } : task;
     });
     setTasks(newTasks);
   };
   return (
     <>
-      <ul>
+      <Flex
+        flexWrap="wrap"
+        flexDir="row"
+        my="1em"
+      >
         {tasks.map((task,index) => (
-          <li key={`todo-${index}`}>
-            {task.isDone ? <s>{task.label}</s> : task.label}
-            <input
-              onChange={(e) => handleCheckBox(e, index)}
-              type="checkbox"
-              checked={task.isDone}
-            />
-          </li>
+          <Button
+            key={`todo-${index}`}
+            variant={!task.isDone ? "solid" :  "outline"}
+            colorScheme={!task.isDone ? "green" :  "gray"}
+            color={!task.isDone ? "#fff" :  "#ccc"}
+            m="0.5em"
+            onClick={() => handleCheckBox(task.isDone, index)}
+          >
+            {task.label}
+          </Button>
         ))}
-      </ul>
+      </Flex>
     </>
   );
 };

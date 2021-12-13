@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import type { Task } from '../';
+import {Input,Button,Flex} from '@chakra-ui/react'
 
 type Props = {
   tasks: Task[];
@@ -34,15 +35,16 @@ export const TaskForm: React.FC<Props> = ({
 
   return (
     <>
-      <input
+      <Input
         onChange={handleNewTaskLabel}
-        type="text"
         value={newTaskLabel}
-        placeholder="Enter the task"
+        placeholder="Enter the new task"
+        my="1em"
       />
-      <button onClick={handleAddTask}>Add</button>
-      <br />
-      <button onClick={handleClearTasks}>Clear</button>
+      <Flex justifyContent="flex-end">
+        <Button onClick={handleClearTasks} colorScheme="gray" mr="0.5em">Clear</Button>
+        <Button onClick={handleAddTask} colorScheme="red">Add</Button>
+      </Flex>
     </>
   );
 };
